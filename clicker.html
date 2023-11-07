@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Clicker</title>
+
+    <style>
+        img {
+            width: 330px;
+
+        }
+
+        #score {
+            font-size: 60px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <img id="banana"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5JlFVInj_z72fVvEfvRm8zkFfKlJzMY-V5hZjej4B&s">
+    <p id="score">0</p>
+    <button id="upgrade">Upgrade</button>
+    <button id="auto">Auto-Click</button>
+</body>
+
+</html>
+
+<script>
+
+    document.getElementById("banana").addEventListener("click", addScore)
+    function addScore() {
+        score = score + increase
+        document.getElementById("score").innerText = score
+    }
+    document.getElementById("upgrade").addEventListener("click", upgrade)
+    function upgrade() {
+        if (score >= 100) {
+            score = score - 100
+            increase = 2
+            document.getElementById("upgrade").disabled = true
+        }
+        document.getElementById("score").innerText = score
+    }
+    document.getElementById("auto").addEventListener("click", auto)
+    function auto() {
+        if (score >= 400) {
+            score = score - 400;
+            auto = setInterval(addScore, 200);
+            document.getElementById("auto").disabled = true
+        }
+        document.getElementById("score").innerText = score
+    }
+
+    var score = 0
+    var increase = 1
+
+</script>
